@@ -3,10 +3,8 @@
 My personal portfolio website — plain HTML, CSS, and JS, no build tools.
 
 Preview
-Go to :- https://jahnad-pr.github.io/Portfolio-jahanad/
 
-
-**Live:** https://jahnad-pr.github.io/Portfolio-jahanad/
+**Live:** https://jahanad-pr.github.io/Portfolio-jahanad/
 
 ## Run Locally
 
