@@ -1349,7 +1349,7 @@ What are you doing here?! you sneaky developer...
           left: `${posX}px`,
           top: `${posY}px`,
         },
-        {duration: 500, fill: "forwards"}
+        { duration: 500, fill: "forwards" }
       );
 
       links.forEach((link) => {
@@ -1402,13 +1402,20 @@ What are you doing here?! you sneaky developer...
   </script>
   <script>
     function visualmode() {
-      document.getElementById("fm").classList.toggle("wmode")
-      document.body.classList.toggle('light-mode');
-      var elements = document.querySelectorAll('.needtobeinvert');
-      elements.forEach(function (element) {
-        element.classList.toggle('invertapplied');
-      })
+      const body = document.body;
+      const toggle = document.getElementById("switchforvisualmode");
+
+      body.classList.toggle("light-mode");
+
+      if (body.classList.contains("light-mode")) {
+        localStorage.setItem("theme", "light");
+        toggle.checked = true;
+      } else {
+        localStorage.setItem("theme", "dark");
+        toggle.checked = false;
+      }
     }
+
   </script>
 
   <script>

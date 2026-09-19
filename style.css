@@ -1189,7 +1189,7 @@ footer {
 
 .cta:hover:before,
 .project-box-wrapper {
-    width: 100%
+    width: 100%;
 }
 
 .project-box {
@@ -1297,6 +1297,10 @@ footer {
     width: 45px;
     height: 45px;
     transition: .3s
+}
+
+.light-mode .cta::before {
+    background: rgb(86, 86, 148);
 }
 
 /* .cta::before {
@@ -1968,8 +1972,8 @@ footer {
         height: calc(76vw/2)
     }
 
-   
-    
+
+
 
 }
 
@@ -2598,6 +2602,10 @@ input[type=submit]:hover {
     background-color: var(--color-dark-mode);
 }
 
+.light-mode .mini-project-tags span {
+    color: rgb(12, 48, 80)
+}
+
 
 
 
@@ -2850,6 +2858,11 @@ input[type=submit]:hover {
     transition-duration: .3s;
     position: relative;
     overflow: hidden;
+}
+
+.light-mode .contact-send-btn {
+    background-color: rgba(4, 12, 16, 0.08);
+    color: rgb(22, 49, 83);
 }
 
 .contact-send-btn svg {
@@ -4712,26 +4725,28 @@ footer {
     }
 
     /* footer — shrink the avatar (and its eyes) together */
-    .footer-avatar-container{
+    .footer-avatar-container {
         width: 50vw;
     }
-    .footer-pupil{
+
+    .footer-pupil {
         width: 18px;
         height: 18px;
     }
-    .footer-avatar-face{
+
+    .footer-avatar-face {
         gap: 3%;
     }
 
-    .footer-avatar-eye{
+    .footer-avatar-eye {
         width: 11vw;
         height: 11vw;
     }
 
-    .footer-avatar-img{
+    .footer-avatar-img {
         /* opacity: .4; */
     }
-   
+
     .logos {
         gap: 22px;
         flex-wrap: wrap;
@@ -4803,4 +4818,415 @@ footer {
     html {
         font-size: 75%;
     }
+}
+
+
+/* ================================================================
+   LIGHT MODE — VISUAL POLISH
+   Keeps the existing layout/design but adapts colors properly.
+   ================================================================ */
+
+.light-mode {
+    /* Main colors */
+    --color-dark-mode: #f5f2ed;
+    --color-black: #ffffff;
+    --color-white: #17171c;
+
+    /* Text */
+    --color-ddd-color: #3f3f46;
+    --color-gray: #71717a;
+
+    /* Borders */
+    --color-navbarBorder-dark: rgba(23, 23, 28, 0.12);
+    --tech-stack-box-border-color: rgba(23, 23, 28, 0.12);
+
+    /* Cards */
+    --tech-stack-box-first-color: #ffffff;
+    --tech-stack-box-second-color: rgba(255, 255, 255, 0);
+
+    /* Shadows */
+    --color-shadowDark: rgba(30, 25, 20, 0.10);
+
+    /* Heading gradients */
+    --static-heading-gradient-blue: #087f8c;
+    --static-heading-gradient-pink: #c84b8c;
+}
+
+
+/* ================================================================
+   GLOBAL
+   ================================================================ */
+
+.light-mode body {
+    background-color: var(--color-dark-mode);
+    color: var(--color-white);
+}
+
+.light-mode ::-webkit-scrollbar-track {
+    background: #e8e4de;
+}
+
+.light-mode ::-webkit-scrollbar-thumb {
+    background-color: #8000ff;
+}
+
+
+/* ================================================================
+   CURSOR
+   ================================================================ */
+
+.light-mode .cursor-outer {
+    border-color: #17171c;
+}
+
+.light-mode .cursor-inner {
+    background-color: #087f8c;
+}
+
+
+/* ================================================================
+   NAVBAR
+   ================================================================ */
+
+.light-mode .navbar {
+    background-image:
+        linear-gradient(to bottom right,
+            rgba(255, 255, 255, 0.92),
+            rgba(255, 255, 255, 0.72));
+
+    border-color: rgba(23, 23, 28, 0.12);
+
+    box-shadow:
+        0 8px 30px rgba(30, 25, 20, 0.07);
+}
+
+.light-mode .navbar-tabs-ul a {
+    color: #25252b;
+}
+
+.light-mode .navbar-tabs-ul li:hover a,
+.light-mode .activeThistab a {
+    color: #111116;
+}
+
+.light-mode .header-social-btn {
+    background: rgba(23, 23, 28, 0.025);
+    color: #52525b;
+    border-color: rgba(23, 23, 28, 0.12);
+}
+
+.light-mode .header-social-btn:hover {
+    color: #8000ff;
+    background: rgba(128, 0, 255, 0.06);
+    border-color: rgba(128, 0, 255, 0.35);
+}
+
+
+/* ================================================================
+   HERO
+   ================================================================ */
+
+.light-mode #hello-friend,
+.light-mode #work {
+    color: #17171c;
+}
+
+.light-mode #info-para {
+    color: #52525b;
+    opacity: 1;
+}
+
+.light-mode .blob {
+    opacity: 0.18;
+}
+
+
+/* ================================================================
+   HERO BUTTONS
+   ================================================================ */
+
+.light-mode .letsTalkBtn-text {
+    background-color: rgba(255, 255, 255, 0.72);
+    color: #17171c;
+    border: 1px solid rgba(23, 23, 28, 0.10);
+}
+
+.light-mode .head-button {
+    color: #3f3f46;
+    border-color: rgba(23, 23, 28, 0.16);
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.light-mode .head-button:hover {
+    color: #8000ff;
+    border-color: rgba(128, 0, 255, 0.4);
+}
+
+
+/* ================================================================
+   SECTION HEADINGS
+   ================================================================ */
+
+.light-mode .projects-heading-article,
+.light-mode .section-heading-article,
+.light-mode .skills-heading-article {
+    background-image:
+        linear-gradient(90deg,
+            #087f8c,
+            #c84b8c);
+}
+
+.light-mode .projectsHeadingP,
+.light-mode .sectionHeadingP,
+.light-mode .skillsHeadingP {
+    background-image:
+        linear-gradient(90deg,
+            rgba(8, 127, 140, 0.35),
+            rgba(200, 75, 140, 0.35));
+}
+
+
+/* ================================================================
+   ABOUT SECTION
+   ================================================================ */
+
+/*
+   Your original About text uses hard-coded white:
+       rgb(255 255 255 / 60%)
+   That makes it almost invisible / wrong in light mode.
+*/
+
+.light-mode .about-content p {
+    color: rgba(23, 23, 28, 0.68);
+}
+
+.light-mode .about-content .highlight {
+    color: #17171c;
+}
+
+
+/* ================================================================
+   SKILL CARDS
+   ================================================================ */
+
+.light-mode .skill-card {
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(249, 247, 243, 0.92));
+
+    border-color: rgba(23, 23, 28, 0.10);
+
+    box-shadow:
+        0 8px 25px rgba(30, 25, 20, 0.055);
+}
+
+.light-mode .skill-card:hover {
+    border-color: rgba(8, 127, 140, 0.45);
+
+    box-shadow:
+        0 14px 35px rgba(30, 25, 20, 0.09);
+}
+
+.light-mode .skill-card-title {
+    color: #17171c;
+}
+
+.light-mode .skill-card-count,
+.light-mode .skill-card-index,
+.light-mode .skill-proficiency-label {
+    color: #71717a;
+}
+
+.light-mode .skill-card-divider {
+    background-color: rgba(23, 23, 28, 0.10);
+}
+
+.light-mode .skill-tags span {
+    background-color: #f3f0eb;
+    border-color: rgba(23, 23, 28, 0.10);
+    color: #087f8c;
+}
+
+
+/* ================================================================
+   EXPERIENCE
+   ================================================================ */
+
+.light-mode .experience-card {
+    background:
+        linear-gradient(145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(249, 247, 243, 0.92));
+
+    border-color: rgba(23, 23, 28, 0.10);
+
+    box-shadow:
+        0 8px 25px rgba(30, 25, 20, 0.055);
+}
+
+.light-mode .experience-card:hover {
+    border-color: rgba(128, 0, 255, 0.35);
+
+    box-shadow:
+        0 15px 35px rgba(30, 25, 20, 0.09);
+}
+
+
+/* ================================================================
+   PROJECTS
+   ================================================================ */
+
+.light-mode .project-box {
+    background-color: #ffffff;
+    border-color: rgba(23, 23, 28, 0.10);
+
+    box-shadow:
+        0 8px 25px rgba(30, 25, 20, 0.055);
+}
+
+.light-mode .project-box:hover {
+    box-shadow:
+        0 15px 35px rgba(30, 25, 20, 0.10);
+}
+
+
+/* ================================================================
+   PROJECT POPUPS / INFO BUTTON
+   ================================================================ */
+
+.light-mode .info-toggle-btn {
+    background-color: #ffffff;
+    border-color: rgba(23, 23, 28, 0.12);
+}
+
+.light-mode .info-toggle-btn img {
+    filter: brightness(0.35);
+}
+
+.light-mode .info-toggle-btn.custom img {
+    filter: brightness(0.35) grayscale(100%);
+}
+
+
+/* ================================================================
+   CONTACT SECTION
+   ================================================================ */
+
+.light-mode .forms {
+    background:
+        linear-gradient(145deg,
+            #f5f2ed,
+            #ebe7e1);
+
+    color: #17171c;
+}
+
+.light-mode .contact-form-card,
+.light-mode .contact-info-card {
+    background: rgba(255, 255, 255, 0.82);
+    border-color: rgba(23, 23, 28, 0.10);
+
+    box-shadow:
+        0 10px 35px rgba(30, 25, 20, 0.07);
+}
+
+.light-mode .contact-field input,
+.light-mode .contact-field textarea {
+    background-color: #ffffff;
+    color: #17171c;
+    border-color: rgba(23, 23, 28, 0.12);
+}
+
+.light-mode .contact-field input::placeholder,
+.light-mode .contact-field textarea::placeholder {
+    color: #8a8a91;
+}
+
+.light-mode .contact-send-btn {
+    background-color: rgba(8, 127, 140, 0.07);
+}
+
+
+/* ================================================================
+   HEADER ACTIONS
+   ================================================================ */
+
+.light-mode .resume-action {
+    color: #3f3f46;
+
+    background: rgba(255, 255, 255, 0.65);
+
+    border-color: rgba(128, 0, 255, 0.30);
+}
+
+.light-mode .resume-action:hover {
+    background: rgba(128, 0, 255, 0.06);
+}
+
+.light-mode .hire-action {
+    color: #ffffff;
+}
+
+
+/* ================================================================
+   FOOTER
+   ================================================================ */
+
+.light-mode .footer-bottom {
+    background-color: #17171c;
+}
+
+.light-mode .tonechange {
+    color: #ffffff;
+}
+
+
+/* ================================================================
+   MOBILE MENU
+   ================================================================ */
+
+.light-mode .mobiletogglemenu {
+    background-color: rgba(255, 255, 255, 0.96);
+    border-color: rgba(23, 23, 28, 0.10);
+}
+
+.light-mode .mobile-navbar-tabs-ul a {
+    color: #17171c;
+}
+
+
+/* ================================================================
+   FORM INPUTS
+   ================================================================ */
+
+.light-mode input,
+.light-mode textarea {
+    color: #17171c;
+}
+
+
+/* ================================================================
+   GENERAL HARD-CODED WHITE FIXES
+   ================================================================ */
+
+.light-mode .text,
+.light-mode .tooltip {
+    color: #ffffff;
+}
+
+
+/* Keep SVG/social icons visible */
+.light-mode .header-social-btn svg {
+    color: inherit;
+}
+
+
+.light-mode .popup-tech-stack span {
+    color: rgb(12, 48, 80)
+}
+
+.light-mode #labelforsetting,
+.light-mode #labelforsound {
+    filter: brightness(0) !important;
 }

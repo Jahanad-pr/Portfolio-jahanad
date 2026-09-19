@@ -149,3 +149,22 @@ experienceCards.forEach((card) => {
     });
 
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+    const savedTheme = localStorage.getItem("theme");
+    const toggle = document.getElementById("switchforvisualmode");
+
+    if (savedTheme === "light") {
+        document.body.classList.add("light-mode");
+
+        if (toggle) {
+            toggle.checked = true;
+        }
+    } else {
+        document.body.classList.remove("light-mode");
+
+        if (toggle) {
+            toggle.checked = false;
+        }
+    }
+});
