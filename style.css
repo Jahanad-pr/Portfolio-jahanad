@@ -1284,7 +1284,7 @@ footer {
     cursor: pointer;
     display: flex;
     align-items: center;
-    justify-content: flex-start
+    justify-content: flex-start;
 }
 
 .cta::before {
@@ -1300,7 +1300,7 @@ footer {
 }
 
 .light-mode .cta::before {
-    background: rgb(86, 86, 148);
+    background: rgb(202, 202, 249);
 }
 
 /* .cta::before {
@@ -1319,6 +1319,10 @@ footer {
     font-weight: 600;
     letter-spacing: .05em;
     color: var(--color-light-blue)
+}
+
+.light-mode .cta span{
+    color: black;
 }
 
 .cta svg {
@@ -2352,6 +2356,7 @@ input[type=submit]:hover {
     display: flex;
     align-items: center;
 }
+
 
 .cta-expand {
     display: inline-block;
