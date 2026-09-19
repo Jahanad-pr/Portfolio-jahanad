@@ -1033,7 +1033,8 @@ noscript {
     position: relative;
     /* background: blue; */
 }
-.dp img{
+
+.dp img {
     width: 100%;
 }
 
@@ -1966,6 +1967,10 @@ footer {
         width: 100%;
         height: calc(76vw/2)
     }
+
+   
+    
+
 }
 
 @media screen and (max-width:430px) {
@@ -2012,6 +2017,7 @@ footer {
     .logos {
         gap: 20px
     }
+
 }
 
 @media screen and (max-width:300px) {
@@ -2374,6 +2380,7 @@ input[type=submit]:hover {
 
 @media screen and (max-width: 998px) {
 
+
     /* Un-anchor the popup from .image-div so it binds to .project-box instead,
        giving it the full card to work with */
     .image-div {
@@ -2443,6 +2450,10 @@ input[type=submit]:hover {
 
     .popup-close-btn:hover {
         background-color: var(--color-dark-mode);
+    }
+
+    .dp {
+        display: none;
     }
 }
 
@@ -3479,7 +3490,7 @@ a {
     color: var(--color-light-purple);
 }
 
-.experience-company:hover{
+.experience-company:hover {
     text-decoration: solid;
     color: rgb(16, 167, 178);
 }
@@ -3868,4 +3879,928 @@ a {
     box-shadow:
         0 0 0 2px var(--color-dark-mode),
         0 0 0 4px rgba(107, 197, 248, .35);
+}
+
+
+
+/* ####################################################################
+   RESPONSIVE LAYER  (added on top of the original styles above)
+   #################################################################### */
+
+/* ====================================================================
+   responsive.css
+   Load this AFTER style.css:
+     <link rel="stylesheet" href="style.css" />
+     <link rel="stylesheet" href="responsive.css" />
+
+   It only overrides layout / sizing. Colours, gradients, animations and
+   the overall look stay exactly as designed in style.css.
+   ==================================================================== */
+
+
+/* ====================================================================
+   0. GLOBAL FIXES
+   ==================================================================== */
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+/* `* { user-select:none }` stops typing in inputs on iOS Safari */
+input,
+textarea {
+    -webkit-user-select: text;
+    user-select: text;
+}
+
+/* 100vw includes the scrollbar and causes sideways scrolling */
+.forms {
+    width: 100%;
+}
+
+/* Preloader spinner: 10% of a phone screen is tiny */
+#preloader {
+    background-size: clamp(80px, 10vw, 200px);
+}
+
+/* Section heading lines: shrink instead of forcing a fixed width */
+.section-heading-article,
+.mini-projects-heading-article {
+    white-space: nowrap;
+}
+
+.sectionHeadingP,
+.miniProjectsHeadingP {
+    flex: 1 1 auto;
+    width: auto;
+    max-width: 300px;
+    min-width: 20px;
+}
+
+.miniProjectsHeadingP {
+    max-width: 200px;
+}
+
+/* Hero: never clip content, let it grow with the text */
+.landing-page-container {
+    height: auto;
+    min-height: calc(100vh - 115px);
+    min-height: calc(100svh - 115px);
+    padding: 30px 0 60px;
+}
+
+.text-content {
+    height: auto;
+}
+
+.mian-headline {
+    line-height: 1.05;
+}
+
+/* Hero buttons wrap instead of overflowing */
+.contact-btn-div {
+    flex-wrap: wrap;
+    gap: 14px 0;
+    height: auto;
+}
+
+/* Projects: cards grow with their content instead of clipping */
+.project-detail-popup {
+    justify-content: flex-start;
+    overflow-y: auto;
+    scrollbar-width: thin;
+}
+
+.popup-content {
+    margin: auto 0;
+    max-height: none;
+}
+
+/* Popup close button / contact info text should never overflow */
+.contact-info-text {
+    min-width: 0;
+}
+
+.contact-info-value {
+    overflow-wrap: anywhere;
+}
+
+/* Footer: stack background + content in the same grid cell so the
+   footer can grow taller than 100vh on short / small screens */
+footer {
+    display: grid;
+    background-color: #0b0b0b;
+}
+
+.footer-background,
+.footer-foreground {
+    grid-area: 1 / 1;
+}
+
+.footer-background {
+    height: auto;
+    min-height: 100vh;
+}
+
+.footer-foreground {
+    position: relative;
+    z-index: 2;
+    top: auto;
+    height: auto;
+    min-height: 100vh;
+}
+
+.two-words {
+    height: auto;
+    padding: 24px 20px;
+    text-align: center;
+}
+
+.footer-bottom {
+    height: auto;
+    min-height: 80px;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* ====================================================================
+   1. TOUCH DEVICES (no hover, no mouse)
+   ==================================================================== */
+
+@media (hover: none),
+(pointer: coarse) {
+
+    /* custom cursor is useless on touch */
+    .cursor-inner,
+    .cursor-outer {
+        display: none;
+    }
+
+    /* "View Resume" pill: show its label without needing hover */
+    .resume-btn .sign {
+        width: 30%;
+        padding-left: 20px;
+    }
+
+    .resume-btn .text {
+        opacity: 1;
+        width: 70%;
+        padding-right: 10px;
+    }
+
+    /* "Live view" link: show the word "view" without hover */
+    .cta-expand {
+        max-width: 80px;
+        opacity: 1;
+    }
+
+    /* mouse-follow glow does nothing on touch */
+    .experience-card::before {
+        display: none;
+    }
+}
+
+
+/* ====================================================================
+   2. DESKTOP-ONLY PROJECT CARD LAYOUT  (min 999px)
+   ==================================================================== */
+
+@media screen and (min-width: 999px) {
+
+    .project-box {
+        height: auto;
+        min-height: 400px;
+    }
+
+    .info-div {
+        height: auto;
+        padding: 40px;
+    }
+
+    /* image-div stretches to the card's height; the image is pinned
+       inside it exactly like the original (70px top, 10px left) */
+    .image-div {
+        height: auto;
+        padding: 0;
+        position: relative;
+    }
+
+    .image-div .project-preview-img {
+        position: absolute;
+        top: 70px;
+        left: 10px;
+        width: auto;
+        max-width: none;
+        height: calc(100% - 70px);
+    }
+}
+
+
+/* ====================================================================
+   3. LAPTOPS / SMALL DESKTOPS  (max 1300px)
+   ==================================================================== */
+
+@media screen and (max-width: 1300px) {
+
+    /* navbar was overflowing here: drop the social icons (they're in
+       the contact section + footer anyway) */
+    .header-socials {
+        display: none;
+    }
+
+    .navbar-tabs-ul {
+        margin-right: 16px;
+        gap: 26px;
+    }
+
+    .logo {
+        min-width: 64px;
+    }
+}
+
+
+/* ====================================================================
+   4. SMALL LAPTOPS / LANDSCAPE TABLETS  (max 1200px)
+   ==================================================================== */
+
+@media screen and (max-width: 1200px) {
+
+    .navbar {
+        width: 90%;
+    }
+
+    .navbar-tabs {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .header-action-btn {
+        padding: 0 14px;
+    }
+
+    .header-actions {
+        gap: 10px;
+    }
+
+    /* fluid hero headline so long lines never spill out */
+    #name,
+    #work {
+        font-size: clamp(30px, 8.5vw, 76.8px);
+    }
+
+    #info-para {
+        width: 90%;
+        line-height: 1.6;
+    }
+
+    .mini-project-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skill-card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* ====================================================================
+   5. TABLETS & PHONES  (max 998px)  — mobile navigation kicks in
+   ==================================================================== */
+
+@media screen and (max-width: 998px) {
+
+    html {
+        font-size: 56%;
+    }
+
+    html {
+        scroll-padding-top: 90px;
+    }
+
+    /* ---------- header / navbar ---------- */
+    .navbar {
+        width: 90%;
+    }
+
+    /* the desktop tabs, socials and Resume/Hire buttons are replaced by
+       the hamburger menu — hide the whole group so nothing overlaps it */
+    .navbar-tabs {
+        display: none;
+    }
+
+    .hamburgerbase {
+        width: 90%;
+    }
+
+    .mobiletogglemenu {
+        overflow-y: auto;
+    }
+
+    .mobile-navbar-tabs-ul {
+        gap: 50px;
+        padding: 40px 0;
+        min-height: 100%;
+    }
+
+    .mobile-navbar-tabs-li {
+        font-size: 2rem;
+    }
+
+    /* ---------- hero ---------- */
+    .text-content {
+        width: 84%;
+    }
+
+    #hello-friend {
+        height: auto;
+        min-height: 50px;
+        font-size: clamp(20px, 4vw, 32px);
+        flex-wrap: wrap;
+    }
+
+    #info-para {
+        width: 100%;
+        font-size: 1.8rem;
+        padding-top: 20px;
+    }
+
+    #tsm {
+        padding-top: 16px;
+    }
+
+    .contact-btn-div {
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 18px 16px;
+        padding-top: 16px;
+    }
+
+    .head-button {
+        margin-left: 0;
+        padding: 12px 24px;
+        font-size: 15px;
+    }
+
+    .letsTalkBtn {
+        margin-right: 6px;
+        margin-bottom: 6px;
+    }
+
+    .setting-container {
+        margin-left: 0;
+    }
+
+    /* ---------- section spacing ---------- */
+    .about-section-container {
+        padding-top: 120px;
+    }
+
+    .skills-section-container {
+        padding-top: 100px;
+    }
+
+    .experience-section-container {
+        padding-top: 110px;
+        padding-bottom: 60px;
+    }
+
+    .projects-section-container {
+        padding: 100px 0;
+    }
+
+    .about-section,
+    .skills-section,
+    .projects-section-div,
+    .experience-section {
+        width: 84%;
+    }
+
+    .section-heading-article {
+        font-size: 2.8rem;
+    }
+
+    .frontend-dev-heading {
+        font-size: 2.6rem;
+        letter-spacing: 3px;
+        height: auto;
+        padding: 10px 0;
+    }
+
+    .frontend-dev-heading.mt {
+        margin-top: 30px;
+    }
+
+    /* ---------- about ---------- */
+    .about-info p {
+        font-size: 1.8rem;
+    }
+
+    .dp img {
+        max-width: 420px;
+    }
+
+    /* ---------- experience timeline: line moves to the left ---------- */
+    .experience-timeline {
+        margin-top: 40px;
+        padding-bottom: 40px;
+    }
+
+    .experience-line {
+        left: 22px;
+        transform: none;
+    }
+
+    .experience-node {
+        left: 22px;
+        top: 60px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .experience-node-inner {
+        width: 26px;
+        height: 26px;
+    }
+
+    .experience-item {
+        justify-content: flex-end;
+    }
+
+    .experience-card {
+        width: calc(100% - 62px);
+        min-height: 0;
+        padding: 24px;
+    }
+
+    .experience-card-main h3 {
+        font-size: 2.4rem;
+    }
+
+    .experience-company {
+        font-size: 1.7rem;
+    }
+
+    .experience-description {
+        font-size: 1.6rem;
+    }
+
+    .experience-tags span {
+        font-size: 1.3rem;
+    }
+
+    /* ---------- projects: card stacks vertically ---------- */
+    .project-boxes-div {
+        padding: 30px 0;
+        gap: 36px;
+    }
+
+    .project-box {
+        flex-direction: column;
+        height: auto;
+        min-height: 0;
+    }
+
+    .info-div {
+        width: 100%;
+        height: auto;
+        padding: 32px 28px;
+        gap: 16px;
+    }
+
+    .ProjectHeading {
+        font-size: 3rem;
+    }
+
+    .ProjectDescription {
+        font-size: 1.6rem;
+        line-height: 1.55;
+    }
+
+    /* image-div stays position:static (from style.css) so the popup
+       covers the whole card; the image fills a fixed-height strip */
+    .image-div {
+        width: 100%;
+        height: clamp(200px, 52vw, 380px);
+        padding: 0 0 0 40px;
+    }
+
+    .image-div .project-preview-img {
+        position: static;
+        width: 100%;
+        height: 100%;
+        max-width: none;
+        object-fit: cover;
+        object-position: left top;
+        border-top-left-radius: 24px;
+    }
+
+    .project-detail-popup {
+        padding: 26px 22px 80px;
+    }
+
+    .popup-description {
+        font-size: 1.6rem;
+    }
+
+    .popup-tech-stack span,
+    .link-url {
+        font-size: 1.4rem;
+    }
+
+    .link-label {
+        font-size: 1.3rem;
+    }
+
+    .copy-btn {
+        font-size: 1.2rem;
+        padding: 6px 12px;
+    }
+
+    .popup-close-btn {
+        font-size: 1.5rem;
+        padding: 8px 18px;
+    }
+
+    /* ---------- mini projects ---------- */
+    .mini-projects-heading {
+        margin-top: 60px;
+    }
+
+    .mini-project-title {
+        font-size: 2.2rem;
+    }
+
+    .mini-project-desc {
+        font-size: 1.6rem;
+    }
+
+    /* ---------- contact ---------- */
+    .forms {
+        padding: 100px 20px;
+    }
+
+    .contact-header {
+        margin-bottom: 40px;
+    }
+
+    .contact-heading {
+        font-size: 4rem;
+    }
+
+    .contact-subtitle {
+        font-size: 1.6rem;
+    }
+
+    /* 16px stops iOS Safari from zooming the page when a field is focused */
+    .contact-field input,
+    .contact-field textarea {
+        font-size: 16px;
+    }
+
+    .contact-field input::placeholder,
+    .contact-field textarea::placeholder {
+        font-size: 1.5rem;
+    }
+
+    .contact-info-value {
+        font-size: 1.6rem;
+    }
+
+    /* ---------- footer ---------- */
+    .two-words article {
+        font-size: clamp(16px, 3.6vw, 24px);
+    }
+
+    .footer-bottom article {
+        font-size: 1.4rem;
+    }
+}
+
+
+/* ====================================================================
+   6. LARGE PHONES / SMALL TABLETS  (max 768px)
+   ==================================================================== */
+
+@media screen and (max-width: 768px) {
+
+    html {
+        font-size: 54%;
+    }
+
+    .contact-btn-div {
+        flex-direction: row;
+        height: auto;
+    }
+
+    .project-boxes-div {
+        padding: 20px 0;
+    }
+}
+
+
+/* ====================================================================
+   7. PHONES  (max 600px)
+   ==================================================================== */
+
+@media screen and (max-width: 600px) {
+
+    .skill-card-grid,
+    .mini-project-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .skill-card-grid {
+        margin-top: 30px;
+        gap: 18px;
+    }
+
+    .skill-card {
+        padding: 22px;
+    }
+
+    .mini-project-grid {
+        gap: 18px;
+    }
+
+    .contact-form-card {
+        padding: 24px;
+    }
+}
+
+
+/* ====================================================================
+   8. SMALL PHONES  (max 500px)
+   ==================================================================== */
+
+@media screen and (max-width: 500px) {
+
+    html {
+        font-size: 52%;
+    }
+
+    /* header */
+    .navbar {
+        width: 92%;
+        padding: 0 14px;
+    }
+
+    .hamburgerbase {
+        width: 92%;
+        padding: 20px 14px;
+    }
+
+    .hey {
+        left: 70px;
+        font-size: 2rem;
+    }
+
+    /* hero */
+    .landing-page-container {
+        height: auto;
+        min-height: calc(100svh - 115px);
+        padding: 20px 0 50px;
+    }
+
+    .text-content {
+        width: 88%;
+        justify-content: center;
+    }
+
+    #hello-friend {
+        font-size: 20px;
+    }
+
+    #name,
+    #work {
+        font-size: clamp(28px, 9.6vw, 44px);
+    }
+
+    #info-para {
+        font-size: 1.7rem;
+    }
+
+    .head-button {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+    .letsTalkBtn {
+        width: 150px;
+    }
+
+    /* sections */
+    .about-section,
+    .skills-section,
+    .projects-section-div,
+    .experience-section {
+        width: 88%;
+    }
+
+    .about-section-container {
+        padding-top: 90px;
+    }
+
+    .skills-section-container {
+        padding-top: 80px;
+    }
+
+    .projects-section-container {
+        padding: 80px 0;
+    }
+
+    .section-heading-article {
+        font-size: 2.6rem;
+    }
+
+    .frontend-dev-heading {
+        font-size: 2.3rem;
+        letter-spacing: 2px;
+    }
+
+    .dp img {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    /* experience */
+    .experience-line {
+        left: 16px;
+    }
+
+    .experience-node {
+        left: 16px;
+        width: 34px;
+        height: 34px;
+        top: 56px;
+        box-shadow: 0 0 0 4px var(--color-dark-mode);
+    }
+
+    .experience-node-inner {
+        width: 22px;
+        height: 22px;
+    }
+
+    .experience-node-inner svg {
+        width: 14px;
+        height: 14px;
+    }
+
+    .experience-card {
+        width: calc(100% - 46px);
+        padding: 20px;
+    }
+
+    /* projects */
+    .project-box {
+        border-radius: 22px;
+    }
+
+    .info-div {
+        padding: 26px 22px;
+    }
+
+    .ProjectHeading {
+        font-size: 2.6rem;
+    }
+
+    .image-div {
+        padding-left: 28px;
+        height: clamp(170px, 56vw, 260px);
+    }
+
+    .image-div .project-preview-img {
+        border-top-left-radius: 14px;
+    }
+
+    .project-detail-popup {
+        border-radius: 22px;
+    }
+
+    .popup-link-row {
+        flex-wrap: wrap;
+    }
+
+    .link-url {
+        flex-basis: 100%;
+        order: 3;
+    }
+
+    /* mini projects */
+    .mini-project-card {
+        padding: 18px;
+    }
+
+    /* contact */
+    .forms {
+        padding: 80px 16px;
+    }
+
+    .contact-heading {
+        font-size: 3rem;
+    }
+
+    .contact-info-card {
+        padding: 14px 16px;
+        gap: 14px;
+    }
+
+    .contact-form-card {
+        padding: 20px;
+    }
+
+    /* footer — shrink the avatar (and its eyes) together */
+    .footer-avatar-container{
+        width: 50vw;
+    }
+    .footer-pupil{
+        width: 18px;
+        height: 18px;
+    }
+    .footer-avatar-face{
+        gap: 3%;
+    }
+
+    .footer-avatar-eye{
+        width: 11vw;
+        height: 11vw;
+    }
+
+    .footer-avatar-img{
+        /* opacity: .4; */
+    }
+   
+    .logos {
+        gap: 22px;
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 0;
+    }
+}
+
+
+/* ====================================================================
+   9. VERY SMALL PHONES  (max 380px)
+   ==================================================================== */
+
+@media screen and (max-width: 380px) {
+
+    html {
+        font-size: 50%;
+    }
+
+    .navbar,
+    .hamburgerbase {
+        width: 94%;
+    }
+
+    .letsTalkBtn {
+        width: 140px;
+    }
+
+    .head-button {
+        padding: 9px 16px;
+    }
+
+
+
+    .contact-info-icon {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+/* ====================================================================
+   10. SHORT LANDSCAPE SCREENS (phones on their side)
+   ==================================================================== */
+
+@media screen and (max-height: 520px) and (orientation: landscape) {
+
+    .mobile-navbar-tabs-ul {
+        gap: 24px;
+    }
+
+    .landing-page-container {
+        padding: 30px 0 60px;
+    }
+
+    #name,
+    #work {
+        font-size: clamp(28px, 6vw, 56px);
+    }
+}
+
+
+/* ====================================================================
+   11. VERY LARGE SCREENS — stop the layout from stretching forever
+   ==================================================================== */
+
+@media screen and (min-width: 2200px) {
+
+    html {
+        font-size: 75%;
+    }
 }
